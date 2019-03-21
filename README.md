@@ -2,7 +2,7 @@
 
 This library simplifies connecting to a [Loop](https://github.com/lightninglabs/loop) Daemon via gRPC. It wraps all callback functions in promises to make api calls easier to work with.
 
-This library supports LND version 0.5.2-99-beta commit=queue/v1.0.1-106-g9143067014bcde14f1e8f7eb515bae1ccccb97c5.
+This library supports Loop version 0.1.0 commit 769c69e512d2ea57e814e8df354a1a340f11c133.
 
 This library is just a fork and adaptation of lnd-async, all credit is for lnd-async developer.
 
