@@ -1,0 +1,35 @@
+{
+  "name": "loop-async",
+  "version": "0.1.0",
+  "description": "Loop gRPC client with native promise support",
+  "keywords": [
+    "loop",
+    "lnd",
+    "async",
+    "promise",
+    "lightning network",
+    "bitcoin",
+    "litecoin"
+  ],
+  "main": "lib/loop-async",
+  "author": "Francisco Calderón <fjcalderon@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 7.6.0"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "bugs": {
+    "url": "https://github.com/grunch/loop-async/issues"
+  },
+  "homepage": "https://github.com/grunch/loop-async#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grunch/loop-async.git"
+  },
+  "dependencies": {
+    "@grpc/proto-loader": "^0.3.0",
+    "grpc": "^1.15.1"
+  }
+}
