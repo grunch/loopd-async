@@ -11,10 +11,25 @@ Loop is in a early stage, for security reasons we should run this software on th
 To establish a connection to gRPC `localhost:11010`:
 
 ```javascript
-const loop = require('./lib/loop-async');
+const loop = require('loopd-async');
 
 async function getTerms() {
   const client = await loop.connect();
+  return await client.loopOutTerms({});
+}
+getTerms()
+  .then(loop => console.log(loop))
+  .catch(error => console.error(error));
+```
+If you need to add specific node IP and Port you can do it this way:
+```javascript
+const loop = require('loopd-async');
+
+async function getTerms() {
+  const client = await loop.connect({
+    loopHost: '1.1.1.1',
+    loopPort: 11010,
+  });
   return await client.loopOutTerms({});
 }
 getTerms()

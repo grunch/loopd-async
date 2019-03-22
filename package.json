@@ -1,6 +1,6 @@
 {
-  "name": "loop-async",
-  "version": "0.1.0",
+  "name": "loopd-async",
+  "version": "0.1.1",
   "description": "Loop gRPC client with native promise support",
   "keywords": [
     "loop",
@@ -21,12 +21,12 @@
     "lib": "lib"
   },
   "bugs": {
-    "url": "https://github.com/grunch/loop-async/issues"
+    "url": "https://github.com/grunch/loopd-async/issues"
   },
-  "homepage": "https://github.com/grunch/loop-async#readme",
+  "homepage": "https://github.com/grunch/loopd-async#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grunch/loop-async.git"
+    "url": "git+https://github.com/grunch/loopd-async.git"
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.3.0",
