@@ -1,4 +1,4 @@
-# loop-async
+# loopd-async
 
 This library simplifies connecting to a [Loop](https://github.com/lightninglabs/loop) Daemon via gRPC. It wraps all callback functions in promises to make api calls easier to work with.
 
