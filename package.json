@@ -1,6 +1,6 @@
 {
   "name": "loopd-async",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Loop gRPC client with native promise support",
   "keywords": [
     "loop",
@@ -12,6 +12,9 @@
     "litecoin"
   ],
   "main": "lib/loop-async",
+  "scripts": {
+    "start": "node server.js"
+  },
   "author": "Francisco Calderón <fjcalderon@gmail.com>",
   "license": "MIT",
   "engines": {
@@ -30,6 +33,13 @@
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.3.0",
-    "grpc": "^1.15.1"
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "express-basic-auth": "^1.1.6",
+    "grpc": "^1.15.1",
+    "morgan": "^1.9.1"
   }
 }
