@@ -1,4 +1,4 @@
-const config = require('dotenv');
+require('dotenv').config();
 const https = require('https');
 const { join } = require('path');
 const { readFileSync } = require('fs');
