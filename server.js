@@ -25,6 +25,16 @@ const logFormat = ':method :url :status - :response-time ms - :user-agent';
 const port = process.env.PORT || 20010;
 const httpsPort = 20020;
 
+if (!LOOPD_BASIC_AUTH_PASSWORD) {
+  log('LOOPD_BASIC_AUTH_PASSWORD env var is required for Stand-Alone REST API Server');
+  process.exit(1);
+}
+
+if (!TLS_DIR) {
+  log('TLS_DIR env var is required for Stand-Alone REST API Server');
+  process.exit(1);
+}
+
 app.disable('x-powered-by');
 app.use(compress);
 app.use(cors());

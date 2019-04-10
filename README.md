@@ -83,9 +83,10 @@ authorization header that contains Base64 encoded credentials.
 To generate the Base64 encoded credentials you can:
 
     > let username = 'admin';
-    // default username is admin.
+    // username must match the LOOPD_BASIC_AUTH_USER in your env variables
+    // if you don't indicate this, the default username is 'admin'
     > let password = 'super_secret_passwd!';
-    // password must match the LOOPD_SECRET_KEY in your env variables.
+    // password must match the LOOPD_BASIC_AUTH_PASSWORD in your env variables.
     > btoa(`${username}:${password}`);
     // YWRtaW46c3VwZXJfc2VjcmV0X3Bhc3N3ZCE=
 
