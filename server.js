@@ -1,5 +1,6 @@
 require('dotenv').config();
 const https = require('https');
+const WebSocket = require('ws');
 const { join } = require('path');
 const { readFileSync } = require('fs');
 const basicAuth = require('express-basic-auth');
@@ -13,6 +14,11 @@ const {
   loopOut,
   loopOutQuote,
 } = require('./service');
+const {
+  monitor,
+  broadcast,
+  verifyClient,
+} = require('./push');
 
 const {
   TLS_DIR,
@@ -22,8 +28,7 @@ const {
 const { log } = console;
 const app = express();
 const logFormat = ':method :url :status - :response-time ms - :user-agent';
-const port = process.env.PORT || 20010;
-const httpsPort = 20020;
+const port = process.env.PORT || 22020;
 
 if (!LOOPD_BASIC_AUTH_PASSWORD) {
   log('LOOPD_BASIC_AUTH_PASSWORD env var is required for Stand-Alone REST API Server');
@@ -52,5 +57,14 @@ app.post('/v0/loop_out_quote', loopOutQuote);
 const [cert, key] = ['cert', 'key']
   .map(extension => join(TLS_DIR, `tls.${extension}`))
   .map(n => readFileSync(n, 'utf8'));
-const httpsServer = https.createServer({ cert, key }, app);
-httpsServer.listen(httpsPort, () => log(`Listening HTTPS on port: ${httpsPort}`));
+const server = https.createServer({ cert, key }, app);
+
+const wss = new WebSocket.Server({ server, verifyClient });
+monitor().then(subscription => {
+  subscription.on('data', row => broadcast({log, row, wss}));
+  subscription.on('end', () => {});
+  subscription.on('error', err => log([503, 'SubscribeTransactionsErr', err]));
+  subscription.on('status', ({}) => {});
+});
+
+server.listen(port, () => log(`Listening HTTPS on port: ${port}`));
