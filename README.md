@@ -3,7 +3,7 @@
 ## Overview
 This library simplifies connecting to a [Loop](https://github.com/lightninglabs/loop) Daemon via gRPC. It wraps all callback functions in promises to make api calls easier to work with.
 
-This library supports Loop version 0.1.0 commit e8005d095a3dfd79269054bb9a6569b997eafe42.
+This library supports Loop version v0.1.1-alpha.
 
 The gRPC wrapper of this library is a fork and adaptation of lnd-async, all credit is for lnd-async developers.
 
@@ -45,7 +45,7 @@ getTerms()
 ```
 ## Using as a Stand-Alone REST API Server
 
-    git clone git@github.com:grunch/loopd-async.git
+    git clone https://github.com/grunch/loopd-async.git
     cd loopd-async
     npm install
 ### Configure
