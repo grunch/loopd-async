@@ -11,13 +11,16 @@ const { LOOPD_HOST, LOOPD_PORT } = process.env;
 
   @on(data)
   {
-    amt: <int64>
-    id: <string>
-    type: <SwapType>
-    state: <SwapState>
-    initiation_time: <int64>
-    last_update_time: <int64>
-    htlc_address: <string>
+    amt: <Requested swap amount in sats Number>
+    id: <Swap identifier String>
+    type: <Swap type String>
+    state: <SwapState, State the swap is currently in String>
+    initiation_time: <Initiation time of the swap Number>
+    last_update_time: <Initiation time of the swap Number>
+    htlc_address: <Htlc address string>
+    cost_server: <Swap server cost Number>
+    cost_onchain: <On-chain transaction cost Number>
+    cost_offchain: <Off-chain routing fees Number>
   }
 */
 
