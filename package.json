@@ -1,6 +1,6 @@
 {
   "name": "loopd-async",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Loop gRPC client with native promise support and REST standalone server",
   "keywords": [
     "loop",
@@ -38,7 +38,7 @@
     "cors": "^2.8.5",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
-    "express-basic-auth": "^1.1.6",
+    "express-basic-auth": "^1.2.0",
     "grpc": "^1.15.1",
     "morgan": "^1.9.1",
     "ws": "^6.2.1"

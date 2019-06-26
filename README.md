@@ -20,11 +20,11 @@ To establish a connection to gRPC `localhost:11010`:
 ```javascript
 const loop = require('loopd-async');
 
-async function getTerms() {
+async function loopInTerms() {
   const client = await loop.connect();
-  return await client.loopOutTerms({});
+  return await client.getLoopInTerms({});
 }
-getTerms()
+loopInTerms()
   .then(loop => console.log(loop))
   .catch(error => console.error(error));
 ```
@@ -32,14 +32,14 @@ If you need to add specific node IP and Port you can do it this way:
 ```javascript
 const loop = require('loopd-async');
 
-async function getTerms() {
+async function loopInTerms() {
   const client = await loop.connect({
-    loopHost: '1.1.1.1',
+    loopHost: 'localhost',
     loopPort: 11010,
   });
-  return await client.loopOutTerms({});
+  return await client.getLoopInTerms({});
 }
-getTerms()
+loopInTerms()
   .then(loop => console.log(loop))
   .catch(error => console.error(error));
 ```
@@ -55,7 +55,7 @@ For convenience in REST mode, you can make a .env file with KEY=VALUE pairs inst
 
 Environment variables:
 
-    export LOOPD_HOST='1.1.1.1'
+    export LOOPD_HOST='localhost'
     export LOOPD_PORT=11010
     export LOOPD_BASIC_AUTH_USER='admin'
     export LOOPD_BASIC_AUTH_PASSWORD='super_secret_passwd!'
