@@ -1,7 +1,7 @@
 const loop = require('../lib/loop-async');
 const { LOOPD_HOST, LOOPD_PORT } = process.env;
 
-/** loop out quote request
+/** Get loop out quote request
 
   {
     amt: <The amount to swap in satoshis Number>

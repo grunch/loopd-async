@@ -92,3 +92,114 @@ To generate the Base64 encoded credentials you can:
 
 And then set the value of the Authorization header to the returned value
 `YWRtaW46c3VwZXJfc2VjcmV0X3Bhc3N3ZCE=`.
+
+## Methods
+- [loopIn](#loopIn) - LoopIn initiates a loop in swap.
+- [getLoopInTerms](#getLoopInTerms) - Returns the terms that the server enforces for swaps.
+- [getLoopInQuote](#getLoopInQuote) - Returns the terms that the server enforces for swaps.
+- [loopOut](#loopOut) - Initiates an loop out swap.
+- [loopOutTerms](#loopOutTerms) - Returns the terms that the server enforces for a loop out swap.
+- [loopOutQuote](#loopOutQuote) - Returns a quote for a loop out swap.
+
+### loopIn
+Initiates a loop in swap with the given parameters. The call returns after the swap has been set up with the swap server. From that point onwards, progress can be tracked via the SwapStatus stream that is returned from Monitor().
+
+    {
+      amt: <Requested swap amount in satoshis Number>
+      max_swap_fee: <Maximum we are willing to pay the server for the swap Number>
+      max_miner_fee: <Maximum in on-chain fees that we are willing to spent Number>
+      loop_in_channel: <The channel to loop in>
+      external_htlc: <If external_htlc is true, we expect the htlc to be published by an external Boolean>
+    }
+
+    @returns
+    {
+      id: <Swap identifier to track status in the update stream String>
+      htlc_address: <Htlc address String>
+    }
+
+### getLoopInTerms
+GetTerms returns the terms that the server enforces for swaps.
+
+
+    {}
+
+    @returns
+    {
+      swap_payment_dest: <The node pubkey where the swap payment needs to be paid to String>
+      swap_fee_base: <The base fee for a swap (sat) Number>
+      swap_fee_rate: <The fee rate for a swap (parts per million) Number>
+      prepay_amt: <Required prepay amount Number>
+      min_swap_amount: <Minimum swap amount (sat) Number>
+      max_swap_amount: <Maximum swap amount (sat) Number>
+      cltv_delta: <On-chain cltv expiry delta Number>
+      max_cltv: <Maximum cltv expiry delta Number>
+    }
+
+### getLoopInQuote
+Returns a quote for a loop out swap with the provided parameters.
+
+
+    {
+      amt: <The amount to swap in satoshis Number>
+    }
+
+    @returns
+    {
+      swap_fee: <The fee that the swap server is charging for the swap Number>
+      prepay_amt: <The part of the swap fee that is requested as a prepayment Number>
+      miner_fee: <An estimate of the on-chain fee that needs to be paid to sweep the HTLC Number>
+    }
+
+### loopOut
+Initiates an loop out swap with the given parameters. The call returns after the swap has been set up with the swap server. From that point onwards, progress can be tracked via the SwapStatus stream that is returned from Monitor().
+
+    {
+      amt: <Requested swap amount in satoshis Number>
+      dest: <Base58 encoded destination address for the swap String>
+      max_swap_routing_fee: <Maximum off-chain fee in msat that may be paid for payment to the server Number>
+      max_prepay_routing_fee: <Maximum off-chain fee in msat that may be paid for payment to the server Number>
+      max_swap_fee: <Maximum we are willing to pay the server for the swap Number>
+      max_prepay_amt: <Maximum amount of the swap fee that may be charged as a prepayment Number>
+      max_miner_fee: <Maximum in on-chain fees that we are willing to spent Number>
+      loop_out_channel: <The channel to loop out String>
+    }
+
+    @returns
+    {
+      id: <Swap identifier to track status in the update stream String>
+      htlc_address: <Htlc address String>
+    }
+
+### loopOutTerms
+Returns the terms that the server enforces for a loop out swap.
+
+    {}
+
+    @returns
+    {
+      swap_payment_dest: <The node pubkey where the swap payment needs to be paid to String>
+      swap_fee_base: <The base fee for a swap (sat) Number>
+      swap_fee_rate: <The fee rate for a swap (parts per million) Number>
+      prepay_amt: <Required prepay amount Number>
+      min_swap_amount: <Minimum swap amount (sat) Number>
+      max_swap_amount: <Maximum swap amount (sat) Number>
+      cltv_delta: <On-chain cltv expiry delta Number>
+      max_cltv: <Maximum cltv expiry delta Number>
+    }
+### loopOutQuote
+Returns a quote for a loop out swap with the provided parameters.
+
+    {
+      amt: <The amount to swap in satoshis Number>
+    }
+
+    @returns
+    {
+      swap_fee: <The fee that the swap server is charging for the swap Number>
+      prepay_amt: <The part of the swap fee that is requested as a prepayment Number>
+      miner_fee: <An estimate of the on-chain fee that needs to be paid to sweep the HTLC Number>
+    }
+
+## Official API documentation
+https://lightningloop.io
