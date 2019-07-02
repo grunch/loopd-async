@@ -10,8 +10,11 @@ const cors = require('cors');
 const express = require('express');
 const logger = require('morgan');
 const {
-  getTerms,
+  loopIn,
+  getLoopInTerms,
+  getLoopInQuote,
   loopOut,
+  loopOutTerms,
   loopOutQuote,
 } = require('./service');
 const {
@@ -50,9 +53,12 @@ const userName = LOOPD_BASIC_AUTH_USER || 'admin';
 users.users[userName] = LOOPD_BASIC_AUTH_PASSWORD;
 app.use(basicAuth(users));
 
-app.get('/v0/terms', getTerms);
+app.get('/v0/loop_out_terms', loopOutTerms);
 app.post('/v0/loop_out', loopOut);
 app.post('/v0/loop_out_quote', loopOutQuote);
+app.post('/v0/loop_in_terms', getLoopInTerms);
+app.post('/v0/loop_in', loopIn);
+app.post('/v0/loop_in_quote', getLoopInQuote);
 
 const [cert, key] = ['cert', 'key']
   .map(extension => join(TLS_DIR, `tls.${extension}`))
