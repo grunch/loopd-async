@@ -12,6 +12,7 @@ const { LOOPD_HOST, LOOPD_PORT } = process.env;
     max_prepay_amt: <Maximum amount of the swap fee that may be charged as a prepayment Number>
     max_miner_fee: <Maximum in on-chain fees that we are willing to spent Number>
     loop_out_channel: <The channel to loop out String>
+    conf_target: <The confirmation target that should be used by the swap server Number>
   }
 
   @returns
@@ -36,6 +37,7 @@ module.exports = async (req, res) => {
       max_prepay_amt,
       max_miner_fee,
       loop_out_channel,
+      conf_target,
     } = req.body;
 
     const loopOut = await client.loopOut({
@@ -47,6 +49,7 @@ module.exports = async (req, res) => {
       max_prepay_amt,
       max_miner_fee,
       loop_out_channel,
+      sweep_conf_target: conf_target || 6,
     });
 
     return res.status(200).json(loopOut);

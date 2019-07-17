@@ -163,6 +163,7 @@ Initiates an loop out swap with the given parameters. The call returns after the
       max_prepay_amt: <Maximum amount of the swap fee that may be charged as a prepayment Number>
       max_miner_fee: <Maximum in on-chain fees that we are willing to spent Number>
       loop_out_channel: <The channel to loop out String>
+      conf_target: <The confirmation target that should be used by the swap server Number>
     }
 
     @returns
@@ -192,6 +193,7 @@ Returns a quote for a loop out swap with the provided parameters.
 
     {
       amt: <The amount to swap in satoshis Number>
+      conf_target: <The confirmation target that should be used by the swap server Number>
     }
 
     @returns

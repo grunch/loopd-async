@@ -5,6 +5,7 @@ const { LOOPD_HOST, LOOPD_PORT } = process.env;
 
   {
     amt: <The amount to swap in satoshis Number>
+    conf_target: <The confirmation target that should be used by the swap server Number>
   }
 
   @returns
@@ -21,9 +22,12 @@ module.exports = async (req, res) => {
       loopHost: LOOPD_HOST || 'localhost',
       loopPort: LOOPD_PORT || 11010,
     });
-    const { amt } = req.body;
+    const { amt, conf_target } = req.body;
 
-    const quote = await client.loopOutQuote({ amt });
+    const quote = await client.loopOutQuote({
+      amt,
+      conf_target: conf_target || 6,
+    });
 
     return res.status(200).json(quote);
   } catch (e) {
